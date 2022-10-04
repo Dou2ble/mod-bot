@@ -69,7 +69,7 @@ async def ping(ctx: lb.context) -> None:
         
         await bot.rest.create_message(
             "1026815021952532500", 
-            "``` json" +
+            "```json" +
             json.dumps(warns, sort_keys=True, indent=4) +
             "```"
         )
