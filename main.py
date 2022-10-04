@@ -59,11 +59,6 @@ async def ping(ctx: lb.context) -> None:
                 " :warning:"
         ))
 
-        
-
-        #if not isinstance(user, warns):
-        #    warns.append(user)
-        
         #print(isinstance(user, warns))
         if user not in warns:
             warns[user] = 1
@@ -71,8 +66,7 @@ async def ping(ctx: lb.context) -> None:
             warns[user] += 1
         with open('warns.json', 'w', encoding='utf-8') as f:
             json.dump(warns, f, sort_keys=True, ensure_ascii=False, indent=4)
-    else:
-        await ctx.respond(embeds.missing_perm)
+        
         await bot.rest.create_message(
             "1026815021952532500", 
             "``` json" +
@@ -80,6 +74,8 @@ async def ping(ctx: lb.context) -> None:
             "```"
         )
 
+    else:
+        await ctx.respond(embeds.missing_perm)
 
 
 bot.run(activity=hk.Activity(type=hk.ActivityType.WATCHING, name="1984"))
